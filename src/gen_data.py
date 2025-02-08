@@ -8,7 +8,7 @@ def generate_synthetic_data_structured(
     num_customers=500,
     num_products=50,
     num_records=8000,
-    output_file='structured_purchase_history.csv'
+    output_file='data/raw/purchase_history.csv'
 ):
     """
     Generates synthetic purchase data with built-in patterns to enable:
@@ -160,7 +160,7 @@ def generate_synthetic_data_structured(
         writer = csv.writer(f)
         writer.writerow([
             'CustomerID', 'CustomerName', 'Email', 'Phone', 'Address',
-            'Segment', 'ProductID', 'ProductName', 'Category',
+            'ProductID', 'ProductName', 'Category',
             'PurchaseAmount', 'PurchaseDate'
         ])
 
@@ -210,7 +210,6 @@ def generate_synthetic_data_structured(
                 customers[cid]['Email'],
                 customers[cid]['Phone'],
                 customers[cid]['Address'],
-                seg_type,
                 chosen_pid,
                 prod_info['Name'],
                 prod_info['Category'],
