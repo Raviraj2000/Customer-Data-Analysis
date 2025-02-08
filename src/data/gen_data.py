@@ -166,7 +166,7 @@ def generate_synthetic_data_structured(
 
         for _ in range(num_records):
             # 1. Pick a random customer
-            cid = random.randint(1, num_customers)
+            cid = random.randint(1, noum_customers)
             seg_type = customers[cid]['Segment']
             
             # 2. Generate a random date (with uniform distribution across the range)
