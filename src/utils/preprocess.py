@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import StandardScaler
 
 # Load cleaned purchase history
-def load_data(file_path='data/cleaned/purchase_history_cleaned.csv'):
+def load_data(file_path):
     return pd.read_csv(file_path)
 
 # Extract features for clustering
@@ -19,5 +19,8 @@ def extract_features(df):
 # Standardize features
 def preprocess_data(df):
     scaler = StandardScaler()
+    customer_ids = df[['CustomerID']]
     scaled_features = scaler.fit_transform(df.iloc[:, 1:])  # Exclude CustomerID
-    return df, scaled_features, scaler
+    scaled_df = pd.DataFrame(scaled_features, columns=df.columns[1:])
+    scaled_df.insert(0, 'CustomerID', customer_ids.values)
+    return df, scaled_df, scaler

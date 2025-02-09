@@ -7,7 +7,7 @@ import numpy as np
 def generate_synthetic_data_structured(
     num_customers=500,
     num_products=50,
-    num_records=8000,
+    num_records=10000,
     output_file='data/raw/purchase_history.csv'
 ):
     """
@@ -166,7 +166,7 @@ def generate_synthetic_data_structured(
 
         for _ in range(num_records):
             # 1. Pick a random customer
-            cid = random.randint(1, noum_customers)
+            cid = random.randint(1, num_customers)
             seg_type = customers[cid]['Segment']
             
             # 2. Generate a random date (with uniform distribution across the range)

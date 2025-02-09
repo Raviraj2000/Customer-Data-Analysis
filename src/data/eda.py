@@ -46,6 +46,8 @@ for column in columns_raw.intersection(columns_cleaned):  # Only check common co
 
 print("\n[INFO] Data comparison complete.\n")
 
+df_products = df_cleaned[['ProductID', 'ProductName', 'Category']].drop_duplicates()
+df_products.to_csv('./data/cleaned/products.csv', index=False)
 ##################Top-Selling Products##################
 #By Revenue
 revenue_by_product = (
@@ -91,14 +93,9 @@ print("\nCategories by purchase count (descending):")
 print(count_by_category)
 
 ##################Average Spending per Customer##################
-
 total_spend_per_customer = df_cleaned.groupby('CustomerID')['PurchaseAmount'].sum()
 print("\nTotal spending by each customer (first 10 shown):")
 print(total_spend_per_customer.head(10))
-
-# Average of the total spending across all customers
-overall_average_spend = total_spend_per_customer.mean()
-print(f"\nAverage spending per customer (across all): ${overall_average_spend:.2f}")
 
 avg_spend_per_customer_txn = df_cleaned.groupby('CustomerID')['PurchaseAmount'].mean()
 print("\nAverage spend per transaction for each customer (first 10):")
