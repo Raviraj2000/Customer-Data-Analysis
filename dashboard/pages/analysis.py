@@ -15,9 +15,9 @@ df_cleaned = pd.read_csv("./data/cleaned/purchase_history_cleaned.csv")
 st.subheader("🔥 Top-Selling Products & Categories")
 
 # Sidebar sliders for adjusting number of rows in tables
-top_n_products = st.sidebar.slider("Select Top N Products", 5, 50, 10)
-top_n_categories = st.sidebar.slider("Select Top N Categories", 5, 20, 10)
-top_n_customers = st.sidebar.slider("Select Top N Customers", 5, 50, 10)
+top_n_products = st.sidebar.slider("Select Top N Products", 5, 50, 5)
+top_n_categories = st.sidebar.slider("Select Top N Categories", 5, 20, 5)
+top_n_customers = st.sidebar.slider("Select Top N Customers", 5, 50, 5)
 
 col1, col2 = st.columns(2)
 
@@ -92,10 +92,6 @@ with col5:
 
 # ✅ Compute overall average of these values (i.e., mean of all avg transactions per customer)
 overall_avg_spend_per_transaction = avg_spend_per_transaction_per_customer.mean()
-
-with col6:
-    st.metric("📊 **Overall Avg Spend per Transaction**", f"${overall_avg_spend_per_transaction:.2f}")
-
 # =================== Revenue Visualization =================== #
 st.subheader("📈 Revenue Trends")
 

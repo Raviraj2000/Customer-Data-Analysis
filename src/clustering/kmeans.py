@@ -1,13 +1,9 @@
+import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
-from src.utils.preprocess import extract_features, preprocess_data
-
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.cluster import KMeans
+from utils.preprocess import extract_features, preprocess_data
 from kneed import KneeLocator
-from src.utils.preprocess import preprocess_data
 
 def find_best_k_elbow(customer_data, min_k=3, max_clusters=10):
     """

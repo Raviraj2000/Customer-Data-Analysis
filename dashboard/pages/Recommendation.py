@@ -95,7 +95,7 @@ def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alp
 # **Streamlit UI**
 # ---------------------------- #
 st.set_page_config(page_title="Hybrid Recommendation System", layout="wide")
-st.title(f"🛍️ Hybrid Recommendation System")
+st.title(f"🛍️ Hybrid Recommendation System(Collaborative + Content-Based)")
 # Load datasets
 df_purchases = pd.read_csv("./data/cleaned/purchase_history_cleaned.csv")
 df_products = pd.read_csv("./data/cleaned/products.csv")

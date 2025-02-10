@@ -1,9 +1,7 @@
-from src.utils.preprocess import load_data, extract_features
-from src.clustering.kmeans import apply_kmeans_with_elbow
-from src.clustering.dbscan import apply_dbscan
-from src.clustering.hierarchical import apply_hierarchical, plot_dendrogram
-from src.recommendation.hybrid import hybrid_recommendation
-from src.utils.preprocess import load_data
+from utils.preprocess import load_data, extract_features
+from clustering.kmeans import apply_kmeans_with_elbow
+from recommendation.hybrid import hybrid_recommendation
+from utils.preprocess import load_data
 
 # Load dataset
 df_purchases = load_data("data/cleaned/purchase_history_cleaned.csv")
