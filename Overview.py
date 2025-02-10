@@ -1,7 +1,11 @@
 import streamlit as st
 import pandas as pd
+import plotly.express as px
+from utils.preprocess import load_data, extract_features, preprocess_data
 
-# Set page config
+# ---------------------------- #
+# **Streamlit Page Configuration**
+# ---------------------------- #
 st.set_page_config(
     page_title="Customer Insights Dashboard",
     layout="wide",
@@ -10,10 +14,14 @@ st.set_page_config(
 st.title("📊 Customer Insights Dashboard")
 st.write("Navigate to different sections using the sidebar.")
 
-# Load cleaned data
-df_cleaned = pd.read_csv("./data/raw/purchase_history.csv")
+# ---------------------------- #
+# **Load Cleaned Data**
+# ---------------------------- #
+df_cleaned = load_data("./data/raw/purchase_history.csv")
 
+# ---------------------------- #
 # **Dataset Overview KPIs**
+# ---------------------------- #
 st.subheader("📂 Dataset Overview")
 
 # Compute dataset insights
@@ -34,7 +42,9 @@ avg_transaction_value = total_revenue_cleaned / total_transactions_cleaned
 max_transaction_value = df_cleaned["PurchaseAmount"].max()
 min_transaction_value = df_cleaned["PurchaseAmount"].min()
 
-# **Display key metrics in blocks**
+# ---------------------------- #
+# **Display Key Metrics in Blocks**
+# ---------------------------- #
 col1, col2, col3, col4 = st.columns(4)
 with col1:
     st.markdown("🗂️ **Total Rows**")
@@ -52,7 +62,9 @@ with col4:
     st.markdown("❌ **Duplicate Rows Removed**")
     st.metric(label=" ", value=f"{duplicate_rows:,}")
 
+# ---------------------------- #
 # **Additional Business Insights**
+# ---------------------------- #
 st.subheader("📊 Business Insights")
 
 col5, col6, col7, col8 = st.columns(4)
@@ -88,3 +100,23 @@ with col11:
 with col12:
     st.markdown("🔻 **Min Transaction Value**")
     st.metric(label=" ", value=f"${min_transaction_value:,.2f}")
+
+# ---------------------------- #
+# **Scatter Plot: Total Spend vs. Purchase Count**
+# ---------------------------- #
+st.subheader("📈 Customer Spending vs. Purchase Frequency")
+
+# Aggregate total spent and purchase count per customer
+customer_spending = extract_features(df_cleaned)
+
+# Scatter plot
+fig_scatter = px.scatter(
+    customer_spending,
+    x="total_spent",
+    y="purchase_count",
+    title="Interactive Scatter Plot: Total Spending vs. Purchase Count",
+    labels={"total_spent": "Total Spending", "purchase_count": "Purchase Count"},
+    opacity=0.6
+)
+
+st.plotly_chart(fig_scatter, use_container_width=True)

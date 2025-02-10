@@ -2,14 +2,18 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 
-# Set page configuration
+# ---------------------------- #
+# **Streamlit Page Configuration**
+# ---------------------------- #
 st.set_page_config(page_title="Data Analysis", layout="wide")
 
 st.title("📊 Data Analysis")
 st.write("Explore key insights on product sales, customer spending, and category trends.")
 
-# Load cleaned data
-df_cleaned = pd.read_csv("./data/raw/purchase_history.csv")
+# ---------------------------- #
+# **Load Raw Data**
+# ---------------------------- #
+df = pd.read_csv("./data/raw/purchase_history.csv")
 
 # =================== Top-Selling Products & Categories =================== #
 st.subheader("🔥 Top-Selling Products & Categories")
@@ -23,7 +27,7 @@ col1, col2 = st.columns(2)
 
 # Top Products by Revenue
 revenue_by_product = (
-    df_cleaned.groupby(['ProductID', 'ProductName'])['PurchaseAmount']
+    df.groupby(['ProductID', 'ProductName'])['PurchaseAmount']
     .sum()
     .sort_values(ascending=False)
     .head(top_n_products)
@@ -34,7 +38,7 @@ with col1:
 
 # Top Products by Purchase Count
 count_by_product = (
-    df_cleaned.groupby(['ProductID', 'ProductName'])
+    df.groupby(['ProductID', 'ProductName'])
     .size()
     .sort_values(ascending=False)
     .head(top_n_products)
@@ -45,7 +49,7 @@ with col2:
 
 # Top Categories by Revenue
 revenue_by_category = (
-    df_cleaned.groupby('Category')['PurchaseAmount']
+    df.groupby('Category')['PurchaseAmount']
     .sum()
     .sort_values(ascending=False)
     .head(top_n_categories)
@@ -53,7 +57,7 @@ revenue_by_category = (
 
 # Top Categories by Purchase Count
 count_by_category = (
-    df_cleaned.groupby('Category')
+    df.groupby('Category')
     .size()
     .sort_values(ascending=False)
     .head(top_n_categories)
@@ -74,12 +78,12 @@ st.subheader("👤 Customer Spending Insights")
 col5, col6 = st.columns(2)
 
 # Calculate total spending per customer
-total_spend_per_customer = df_cleaned.groupby('CustomerID')['PurchaseAmount'].sum()
+total_spend_per_customer = df.groupby('CustomerID')['PurchaseAmount'].sum()
 
-# ✅ Calculate the number of transactions per customer
-num_transactions_per_customer = df_cleaned.groupby('CustomerID')['PurchaseAmount'].count()
+# Calculate the number of transactions per customer
+num_transactions_per_customer = df.groupby('CustomerID')['PurchaseAmount'].count()
 
-# ✅ Compute the average spend per transaction per customer
+# Compute the average spend per transaction per customer
 avg_spend_per_transaction_per_customer = total_spend_per_customer / num_transactions_per_customer
 
 with col5:
@@ -90,8 +94,9 @@ with col5:
         .rename("Avg Spend per Transaction ($)")
     )
 
-# ✅ Compute overall average of these values (i.e., mean of all avg transactions per customer)
+# Compute overall average of these values (i.e., mean of all avg transactions per customer)
 overall_avg_spend_per_transaction = avg_spend_per_transaction_per_customer.mean()
+
 # =================== Revenue Visualization =================== #
 st.subheader("📈 Revenue Trends")
 

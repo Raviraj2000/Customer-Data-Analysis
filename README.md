@@ -50,3 +50,15 @@ cd Customer-Data-Analysis
 # Run the app
 streamlit run Overview.py
 ```
+
+### 3. Generate New Data
+
+To generate new data, run the `random_data.py` script located in the `data` directory. This will create new data files in the `data/raw` folder.
+
+```bash
+# Navigate to the data directory
+cd data
+
+# Run the data generation script
+python random_data.py
+```

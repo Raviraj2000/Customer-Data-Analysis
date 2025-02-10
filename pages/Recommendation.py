@@ -8,13 +8,18 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 # **Function: Pearson Correlation for Collaborative Filtering**
 # ---------------------------- #
 def pearson_correlation(matrix):
-    """ Computes the Pearson correlation coefficient between users for collaborative filtering. """
+    """ 
+    Computes the Pearson correlation coefficient between users for collaborative filtering.
+    
+    :param matrix: User-item matrix with users as rows and items as columns.
+    :return: Pearson correlation coefficient matrix.
+    """
     return np.corrcoef(matrix)
 
 # ---------------------------- #
 # **Function: Hybrid Recommendation System**
 # ---------------------------- #
-def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alpha=0.5):
+def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alpha=0.6):
     """
     Hybrid recommendation system: Combines collaborative filtering and content-based filtering.
 
@@ -22,7 +27,7 @@ def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alp
     :param purchase_data: DataFrame containing purchase history.
     :param product_data: DataFrame containing product details.
     :param top_n: Number of recommendations to generate.
-    :param alpha: Weighting factor between collaborative and content-based filtering.
+    :param alpha: Weighting factor between collaborative and content-based filtering (default set to 0.6).
     :return: Recommended products with names & categories, similar users, past transactions.
     """
 
@@ -71,7 +76,7 @@ def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alp
         content_recommendations[:num_content]
     ))
 
-    # Ensure exactly `top_n` recommendations
+    # Ensure exactly top_n recommendations
     while len(hybrid_recommendations) < top_n:
         if len(collab_recommendations) > num_collab:
             hybrid_recommendations.append(collab_recommendations[num_collab])
@@ -95,7 +100,8 @@ def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alp
 # **Streamlit UI**
 # ---------------------------- #
 st.set_page_config(page_title="Hybrid Recommendation System", layout="wide")
-st.title(f"🛍️ Hybrid Recommendation System(Collaborative + Content-Based)")
+st.title("🛍️ Hybrid Recommendation System (Collaborative + Content-Based)")
+
 # Load datasets
 df_purchases = pd.read_csv("./data/raw/purchase_history.csv")
 df_products = pd.read_csv("./data/raw/products.csv")
@@ -112,8 +118,8 @@ st.sidebar.write(f"Customer ID Range: **{customer_id_min} - {customer_id_max}**"
 existing_customers = df_purchases["CustomerID"].unique()
 customer_id = st.sidebar.selectbox("Select Customer ID", existing_customers)
 
-# Alpha Weighting Slider
-alpha = st.sidebar.slider("Collaborative vs Content-Based Weighting (α)", 0.0, 1.0, 0.5)
+# Set default alpha weighting value to 0.6 (slider removed)
+alpha = 0.6
 
 # Top-N Recommendations
 top_n = st.sidebar.slider("Number of Recommendations", 1, 10, 5)
@@ -155,6 +161,5 @@ if st.sidebar.button("Get Recommendations"):
                     st.dataframe(similar_user_transactions)
                 else:
                     st.write("⚠️ No purchase history found for this similar customer.")
-
     else:
         st.write("⚠️ No similar users found.")

@@ -13,6 +13,13 @@ def find_best_k_gmm(scaled_data, min_k=2, max_clusters=10, bic_drop_threshold=1.
     """
     Finds the best number of clusters using BIC and selects the first major drop in BIC score.
     This version attempts to detect when additional clusters yield diminishing returns.
+
+    :param scaled_data: Preprocessed and scaled customer data.
+    :param min_k: Minimum number of clusters to consider.
+    :param max_clusters: Maximum number of clusters to consider.
+    :param bic_drop_threshold: Threshold for detecting significant drops in BIC score.
+    :param knee_sensitivity: Sensitivity parameter for the KneeLocator.
+    :return: Tuple containing the optimal number of clusters, list of k values, and corresponding BIC scores.
     """
     bic_scores = []
     k_values = list(range(min_k, max_clusters + 1))
@@ -55,6 +62,10 @@ def find_best_k_gmm(scaled_data, min_k=2, max_clusters=10, bic_drop_threshold=1.
 def apply_gmm(customer_data, k):
     """
     Applies Gaussian Mixture Model (GMM) clustering on customer data.
+
+    :param customer_data: DataFrame containing customer data.
+    :param k: Number of clusters to form.
+    :return: DataFrame with an additional 'Cluster' column indicating cluster assignments.
     """
     customer_data, scaled_data, _ = preprocess_data(customer_data)
     gmm = GaussianMixture(n_components=k, random_state=42)
@@ -69,6 +80,9 @@ def assign_cluster_labels(customer_data):
     Dynamically assigns cluster labels based on the ratio of total spending to purchase count.
     Clusters with a lower spend-per-purchase ratio (i.e. low total_spent but high purchase_count)
     are labeled as "Budget Spenders", while clusters with a higher ratio are labeled as "Premium Customers".
+
+    :param customer_data: DataFrame containing customer data with cluster assignments.
+    :return: DataFrame with an additional 'Cluster Label' column indicating descriptive labels for clusters.
     """
     # Compute cluster statistics
     cluster_stats = customer_data.groupby("Cluster").agg(
