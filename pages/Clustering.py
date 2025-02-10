@@ -81,17 +81,9 @@ def assign_cluster_labels(customer_data):
     cluster_stats = cluster_stats.sort_values(by="spend_per_purchase", ascending=True)
     
     n_clusters = len(cluster_stats)
-    # Define label sets based on the number of clusters.
-    if n_clusters == 3:
-        labels = ["Budget Spenders", "Moderate Shoppers", "Premium Customers"]
-    elif n_clusters == 4:
-        labels = ["Budget Spenders", "Value Shoppers", "Moderate Shoppers", "Premium Customers"]
-    elif n_clusters == 5:
-        labels = ["Budget Spenders", "Value Shoppers", "Mid-range Shoppers", "High-end Shoppers", "Premium Customers"]
-    else:
-        # For other cases, assign generic labels with ranking
-        labels = [f"Group {i+1}" for i in range(n_clusters)]
-    
+
+    labels = ["Budget Spenders", "Value Shoppers", "Moderate Shoppers", "High Spenders"]
+
     # Assign the labels in order of increasing spend_per_purchase ratio.
     cluster_stats["Cluster Label"] = labels[:n_clusters]
     
