@@ -19,8 +19,5 @@ def extract_features(df):
 # Standardize features
 def preprocess_data(df):
     scaler = StandardScaler()
-    customer_ids = df[['CustomerID']]
     scaled_features = scaler.fit_transform(df.iloc[:, 1:])  # Exclude CustomerID
-    scaled_df = pd.DataFrame(scaled_features, columns=df.columns[1:])
-    scaled_df.insert(0, 'CustomerID', customer_ids.values)
-    return df, scaled_df, scaler
+    return df, scaled_features, scaler

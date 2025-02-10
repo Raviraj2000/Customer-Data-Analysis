@@ -11,7 +11,7 @@ st.title("📊 Customer Insights Dashboard")
 st.write("Navigate to different sections using the sidebar.")
 
 # Load cleaned data
-df_cleaned = pd.read_csv("./data/cleaned/purchase_history_cleaned.csv")
+df_cleaned = pd.read_csv("./data/raw/purchase_history.csv")
 
 # **Dataset Overview KPIs**
 st.subheader("📂 Dataset Overview")
@@ -48,7 +48,7 @@ with col3:
     st.markdown("⚠️ **Missing Values**")
     st.metric(label=" ", value=f"{total_missing_values:,}")
 
-with col4:
+with col4: 
     st.markdown("❌ **Duplicate Rows Removed**")
     st.metric(label=" ", value=f"{duplicate_rows:,}")
 

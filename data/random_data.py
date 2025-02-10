@@ -3,12 +3,13 @@ import random
 from datetime import datetime, timedelta
 from faker import Faker
 import numpy as np
+import pandas as pd
 
 def generate_synthetic_data_no_patterns(
     num_customers=1000,
     num_products=50,
     num_records=10000,
-    output_file='raw/purchase_history.csv'
+    output_file='data/raw/purchase_history.csv'
 ):
     """
     Generates synthetic purchase data without predefined patterns,
@@ -27,12 +28,7 @@ def generate_synthetic_data_no_patterns(
     customers = {}
     for cid in range(1, num_customers + 1):
         customers[cid] = {
-            'Name': fake.name(),
-            'Email': fake.email(),
-            'Phone': fake.numerify('###-###-####'),
-            'Address': fake.address().replace('\n', ', '),
-            # Assign random spending behavior (low, mid, high spenders)
-            'spend_range': random.choice([(5, 100), (75, 200), (200, 500), (400, 1000)])
+            'spend_range': random.choice([(5, 100), (75, 200), (200, 500), (400, 700)])
         }
 
     # -------------------------------------------------------
@@ -60,9 +56,7 @@ def generate_synthetic_data_no_patterns(
     with open(output_file, 'w', newline='', encoding='utf-8') as f:
         writer = csv.writer(f)
         writer.writerow([
-            'CustomerID', 'CustomerName', 'Email', 'Phone', 'Address',
-            'ProductID', 'ProductName', 'Category',
-            'PurchaseAmount', 'PurchaseDate'
+            'CustomerID','ProductID', 'ProductName', 'Category', 'PurchaseAmount', 'PurchaseDate'
         ])
 
         for _ in range(num_records):
@@ -85,16 +79,16 @@ def generate_synthetic_data_no_patterns(
             # 5. Write to CSV
             writer.writerow([
                 cid,
-                customers[cid]['Name'],
-                customers[cid]['Email'],
-                customers[cid]['Phone'],
-                customers[cid]['Address'],
                 chosen_pid,
                 product_info['Name'],
                 product_info['Category'],
                 purchase_amount,
                 purchase_date_str
             ])
+
+    df = pd.read_csv(output_file)
+    df_products = df[['ProductID', 'ProductName', 'Category']].drop_duplicates()
+    df_products.to_csv('./data/raw/products.csv', index=False)
 
     print(f"[INFO] Synthetic data saved to {output_file}")
 

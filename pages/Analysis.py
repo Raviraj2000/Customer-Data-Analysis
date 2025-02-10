@@ -9,7 +9,7 @@ st.title("📊 Data Analysis")
 st.write("Explore key insights on product sales, customer spending, and category trends.")
 
 # Load cleaned data
-df_cleaned = pd.read_csv("./data/cleaned/purchase_history_cleaned.csv")
+df_cleaned = pd.read_csv("./data/raw/purchase_history.csv")
 
 # =================== Top-Selling Products & Categories =================== #
 st.subheader("🔥 Top-Selling Products & Categories")
