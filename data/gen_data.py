@@ -8,7 +8,7 @@ def generate_synthetic_data_structured(
     num_customers=500,
     num_products=50,
     num_records=10000,
-    output_file='data/raw/purchase_history.csv'
+    output_file='raw/purchase_history.csv'
 ):
     """
     Generates synthetic purchase data with built-in patterns to enable:

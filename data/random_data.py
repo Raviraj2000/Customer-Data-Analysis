@@ -8,7 +8,7 @@ def generate_synthetic_data_no_patterns(
     num_customers=1000,
     num_products=50,
     num_records=10000,
-    output_file='data/raw/purchase_history.csv'
+    output_file='raw/purchase_history.csv'
 ):
     """
     Generates synthetic purchase data without predefined patterns,
