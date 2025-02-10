@@ -102,6 +102,16 @@ def hybrid_recommendation(customer_id, purchase_data, product_data, top_n=5, alp
 st.set_page_config(page_title="Hybrid Recommendation System", layout="wide")
 st.title("🛍️ Hybrid Recommendation System (Collaborative + Content-Based)")
 
+# Add a visible info box with instructions so users know how to interact with the page.
+st.info("""
+**How to Use This Page:**
+
+1. Use the sidebar on the left to **select a Customer ID** from the provided list.
+2. Adjust the **Number of Recommendations** if desired.
+3. Click the **"Get Recommendations"** button in the sidebar.
+4. View the personalized recommendations, past transactions, and similar customer details in the main display.
+""")
+
 # Load datasets
 df_purchases = pd.read_csv("./data/raw/purchase_history.csv")
 df_products = pd.read_csv("./data/raw/products.csv")
@@ -151,7 +161,7 @@ if st.sidebar.button("Get Recommendations"):
     # **Display Similar Users with Individual Dropdowns**
     st.subheader("👥 Similar Customers Identified in Collaborative Filtering")
     if similar_users:
-        st.write("🔍 **Click on each dropdown to view purchase history of similar users**")
+        st.write("🔍 **Click on each dropdown to view the purchase history of similar users**")
 
         for similar_user in similar_users:
             with st.expander(f"📌 Similar Customer {similar_user}"):
