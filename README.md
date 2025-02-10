@@ -15,7 +15,7 @@ A comprehensive customer data analysis dashboard built with Python and Streamlit
 
 ## 🛠️ Technology Stack
 
-- Python 3.x
+- Python 3.10
 - Streamlit
 - Pandas
 - Plotly
