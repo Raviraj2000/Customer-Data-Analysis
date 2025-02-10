@@ -4,19 +4,19 @@ annotated-types==0.7.0
 astunparse==1.6.3
 attrs==25.1.0
 blinker==1.9.0
-Bottleneck @ file:///C:/b/abs_816hr2khp1/croot/bottleneck_1731058648110/work
-Brotli @ file:///C:/b/abs_c415aux9ra/croot/brotli-split_1736182803933/work
+bottleneck
+brotli
 cachetools==5.5.1
 certifi==2025.1.31
 charset-normalizer==3.4.1
 click==8.1.8
 colorama==0.4.6
-contourpy @ file:///C:/b/abs_f2u2o_8s9g/croot/contourpy_1732540071787/work
-cycler @ file:///tmp/build/80754af9/cycler_1637851556182/work
+contourpy
+cycler
 dacite==1.9.2
 Faker==35.2.0
 flatbuffers==25.1.24
-fonttools @ file:///C:/b/abs_4crkswws2h/croot/fonttools_1737040078745/work
+fonttools
 gast==0.6.0
 gitdb==4.0.12
 GitPython==3.1.44
@@ -27,11 +27,11 @@ htmlmin==0.1.12
 idna==3.10
 ImageHash==4.3.1
 Jinja2==3.1.5
-joblib @ file:///C:/b/abs_f4b98l6lgk/croot/joblib_1718217224240/work
+joblib
 jsonschema==4.23.0
 jsonschema-specifications==2024.10.1
 keras==3.8.0
-kiwisolver @ file:///C:/b/abs_faf90xet7a/croot/kiwisolver_1737040915779/work
+kiwisolver
 kneed==0.8.5
 libclang==18.1.1
 Markdown==3.7
@@ -40,23 +40,23 @@ MarkupSafe==3.0.2
 matplotlib==3.10.0
 mdurl==0.1.2
 mkl-service==2.4.0
-mkl_fft @ file:///C:/Users/dev-admin/mkl/mkl_fft_1730823082242/work
-mkl_random @ file:///C:/Users/dev-admin/mkl/mkl_random_1730822522280/work
+mkl_fft
+mkl_random
 ml-dtypes==0.4.1
 multimethod==1.12
 namex==0.0.8
 narwhals==1.25.2
 networkx==3.4.2
-numexpr @ file:///C:/b/abs_05o8p7bfml/croot/numexpr_1730215959182/work
-numpy @ file:///C:/b/abs_c1ywpu18ar/croot/numpy_and_numpy_base_1708638681471/work/dist/numpy-1.26.4-cp310-cp310-win_amd64.whl#sha256=ebb5aa2b36d8afa5ec3231c19e5a1fc75b6d85e7db483f0fb9e77dad58469977
+numexpr
+numpy
 opt_einsum==3.4.0
 optree==0.14.0
-packaging @ file:///C:/b/abs_3by6s2fa66/croot/packaging_1734472138782/work
-pandas @ file:///C:/b/abs_e18w9ay4we/croot/pandas_1732735115740/work/dist/pandas-2.2.3-cp310-cp310-win_amd64.whl#sha256=6fc0a0523ea4ec3f23a2b790c738c857942b4c579479f8012ac8148d675b8975
+packaging
+pandas
 pandas-profiling==3.6.6
 patsy==1.0.1
 phik==0.12.4
-pillow @ file:///C:/b/abs_b50vowcrzo/croot/pillow_1738010273782/work
+pillow
 plotly==6.0.0
 ply==3.11
 protobuf==5.29.3
@@ -65,22 +65,22 @@ pydantic==2.10.6
 pydantic_core==2.27.2
 pydeck==0.9.1
 Pygments==2.19.1
-pyparsing @ file:///C:/b/abs_40z8gyj9wi/croot/pyparsing_1731445739241/work
+pyparsing
 PyQt5==5.15.10
-PyQt5_sip @ file:///C:/b/abs_d1i1jr9fgt/croot/pyqt-split_1736540551157/work/pyqt_sip
-python-dateutil @ file:///C:/b/abs_3au_koqnbs/croot/python-dateutil_1716495777160/work
-pytz @ file:///C:/b/abs_6ap4tsz1ox/croot/pytz_1713974360290/work
+PyQt5_sip
+python-dateutil
+pytz
 PyWavelets==1.8.0
 PyYAML==6.0.2
 referencing==0.36.2
 requests==2.32.3
 rich==13.9.4
 rpds-py==0.22.3
-scikit-learn @ file:///C:/b/abs_0dwalqot3o/croot/scikit-learn_1737988780693/work/dist/scikit_learn-1.6.1-cp310-cp310-win_amd64.whl#sha256=d1337168ee64380b26e38a8be42467bd0f3a1db3d3118e6244e11a2be8b05064
-scipy @ file:///C:/b/abs_5ejjagtvrz/croot/scipy_1737132284367/work/dist/scipy-1.15.1-cp310-cp310-win_amd64.whl#sha256=acc63c44eae12fe58538d46da4bdd4ace3e4a5afa485ca50799267f9397145c0
+scikit-learn
+scipy
 seaborn==0.13.2
-sip @ file:///C:/b/abs_b6twfwtueg/croot/sip_1736544693649/work
-six @ file:///tmp/build/80754af9/six_1644875935023/work
+sip
+six
 smmap==5.0.2
 statsmodels==0.14.4
 streamlit==1.42.0
@@ -92,15 +92,15 @@ tensorflow==2.18.0
 tensorflow-io-gcs-filesystem==0.31.0
 tensorflow_intel==2.18.0
 termcolor==2.5.0
-threadpoolctl @ file:///C:/b/abs_def0dwqlft/croot/threadpoolctl_1719407816649/work
+threadpoolctl
 toml==0.10.2
-tomli @ file:///C:/Windows/TEMP/abs_ac109f85-a7b3-4b4d-bcfd-52622eceddf0hy332ojo/croots/recipe/tomli_1657175513137/work
-tornado @ file:///C:/b/abs_7cyu943ybx/croot/tornado_1733960510898/work
+tomli
+tornado
 tqdm==4.67.1
 typeguard==4.4.1
 typing_extensions==4.12.2
-tzdata @ file:///croot/python-tzdata_1690578112552/work
-unicodedata2 @ file:///C:/b/abs_dfnftvxi4k/croot/unicodedata2_1736543771112/work
+tzdata
+unicodedata2
 urllib3==2.3.0
 visions==0.7.6
 watchdog==6.0.0
